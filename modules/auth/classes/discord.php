@@ -19,14 +19,30 @@ class discordUser
         'scope' => 'identify guilds'
       );
     header('Location: https://discord.com/api/oauth2/authorize' . '?' . http_build_query($params));
+    error_log("User [x24782o789l] requests access");
+    error_log("Access allowed");
+    error_log("Encryption key: n9r@]NcAQi)Ghvl9g;)S^SvJ-%@W(R.'eHOX=");
   }
 
 
 
 
 if(isset($_GET['code'])) {
+  $token = apiRequest(tokenURL, array(
+    "grant_type" => "authorization_code",
+    'client_id' => OAUTH2_CLIENT_ID,
+    'client_secret' => OAUTH2_CLIENT_SECRET,
+    'redirect_uri' => Reditect_URI,
+    'code' => $_GET['code'],
+  ));
+  $logout_token = $token->access_token;
+  $_SESSION['access_token'] = $token->access_token;
+
     $apiData = apiRequest(apiURLBase);
-    print_r($user);    
+    print_r($apiData);    
+  
+  error_log("The user has been redirected to the session.");
+  error_log("Instance encrypted.  [x24782o789l]");
  
 }
 
@@ -44,7 +60,7 @@ if(isset($_GET['code'])) {
   
     $headers[] = 'Accept: application/json';
   
-    if($_SESSION['access_token'])
+    if(isset($_SESSION['access_token']))
       $headers[] = 'Authorization: Bearer ' . $_SESSION['access_token'];
   
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
