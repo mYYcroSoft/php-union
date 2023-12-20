@@ -54,7 +54,7 @@ if(session('access_token')) {
   echo '<h3>Logged In</h3>';
   echo '<h4>Welcome, ' . $user->username . '</h4>';
   echo '<pre>';
-    print_r($user);
+  print_r($user);
   echo '</pre>';
 
 } else {
