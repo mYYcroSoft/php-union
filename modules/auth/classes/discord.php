@@ -47,7 +47,7 @@ if(isset($_GET['code'])) {
 }
 
   
-  function apiRequest($url, $post=FALSE, $headers=array()) {
+function apiRequest($url, $post=FALSE, $headers=array()) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -67,4 +67,4 @@ if(isset($_GET['code'])) {
   
     $response = curl_exec($ch);
     return json_decode($response);
-  }
+}
