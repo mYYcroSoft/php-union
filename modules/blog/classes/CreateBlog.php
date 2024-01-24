@@ -32,7 +32,7 @@ class newBlog
         $this->title = $title;
         $this->content = $content;
         $this->author = $author;
-        $this->date = $date;
+         $this->date = $date;
     }
 
     public function createBlog()

@@ -65,9 +65,9 @@ class Blog
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'content' => $this->content,
-            'author' => $this->author,
             'date' => $this->date,
+            'author' => $this->author,
+            'content' => $this->content,
         ];
     }
 
@@ -76,7 +76,7 @@ class Blog
         $sql = "DELETE FROM blog WHERE id='$this->id'";
         $result = $this->conn->query($sql);
         if ($result) {
-            echo 'Blog removed successfully';
+        echo 'Blog removed successfully';
         } else {
             echo 'Error: '.$sql.'<br>'.$this->conn->error;
         }
